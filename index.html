@@ -39,7 +39,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         nav ul {
@@ -55,7 +55,7 @@
         }
 
         nav a:hover {
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         /* Hero Section */
@@ -86,7 +86,7 @@
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: #2c5f7c;
+            background: #d4849c;
             color: white;
             text-decoration: none;
             border-radius: 4px;
@@ -97,7 +97,7 @@
         }
 
         .btn:hover {
-            background: #1e4459;
+            background: #c06d87;
         }
 
         /* Sections */
@@ -111,7 +111,7 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: #2c5f7c;
+            color: #d4849c;
             font-weight: 300;
         }
 
@@ -126,7 +126,7 @@
         .about-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(rgba(44,95,124,0.1), rgba(44,95,124,0.1)),
+            background: linear-gradient(rgba(212,132,156,0.1), rgba(212,132,156,0.1)),
                         url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800') center/cover;
             border-radius: 8px;
         }
@@ -168,7 +168,7 @@
 
         .property-price {
             font-size: 1.5rem;
-            color: #2c5f7c;
+            color: #d4849c;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
@@ -204,7 +204,7 @@
 
         .testimonial-author {
             font-weight: bold;
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         /* Contact Form */
@@ -224,7 +224,7 @@
         }
 
         .contact-card h3 {
-            color: #2c5f7c;
+            color: #d4849c;
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
@@ -248,6 +248,17 @@
 
         .booking-info li {
             padding: 0.3rem 0;
+        }
+
+        .form-embed {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .form-embed iframe {
+            display: block;
         }
 
         .bookings-embed {
@@ -282,7 +293,7 @@
 
         /* Footer */
         footer {
-            background: #2c5f7c;
+            background: #d4849c;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -429,25 +440,9 @@
             <div class="contact-card">
                 <h3>Send a Quick Message</h3>
                 <p>Have a question? Send me a message and I'll get back to you as soon as possible.</p>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                <div class="form-embed">
+                    <iframe width="100%" height="600px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=D0kvBt59E0CKoP_H7hlLBX8bDnGtGZpOpkb7gAhlmslUMDVPMlRTNTBFREpMNEFMQ1NYUFNTMVI2TS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+                </div>
             </div>
 
             <!-- Booking Section -->
@@ -502,33 +497,6 @@
                     });
                 }
             });
-        });
-
-        // Handle contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Create mailto link with form data
-            const subject = encodeURIComponent('Website Contact Form Submission');
-            const body = encodeURIComponent(
-                `Name: ${formData.name}\n` +
-                `Email: ${formData.email}\n` +
-                `Phone: ${formData.phone}\n\n` +
-                `Message:\n${formData.message}`
-            );
-            
-            window.location.href = `mailto:jenny@jennyfilkins.com?subject=${subject}&body=${body}`;
-            
-            // Optional: Reset form after submission
-            // this.reset();
-            // alert('Opening your email client...');
         });
     </script>
 </body>
