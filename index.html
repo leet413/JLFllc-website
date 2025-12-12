@@ -442,6 +442,14 @@
                 gap: 2rem;
             }
 
+            #property-alerts div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            #property-alerts div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
             h2 {
                 font-size: 2rem;
             }
@@ -471,7 +479,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Find Your Dream Home</h1>
-            <p>Luxury Real Estate Expert on Hilton Head Island</p>
+            <p>Luxury Real Estate Expert in [Your City]</p>
             <a href="#contact" class="btn">Get In Touch</a>
         </div>
     </section>
@@ -482,7 +490,7 @@
         <div class="about-content">
             <div class="about-image fade-in"></div>
             <div class="about-text fade-in">
-                <p>With years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
+                <p>With over [X] years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
                 <p>My commitment to excellence, attention to detail, and deep knowledge of the local market ensures that whether you're buying or selling, you'll receive the personalized service you deserve.</p>
                 <p>Let's work together to make your real estate goals a reality.</p>
                 <a href="#contact" class="btn">Schedule a Consultation</a>
@@ -524,25 +532,112 @@
         </div>
     </section>
 
+    <!-- Property Alerts Section -->
+    <section id="property-alerts" style="background: linear-gradient(135deg, #f8e8ed 0%, #fdf5f7 100%); padding: 5rem 5%; margin: 0;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 class="fade-in" style="color: #d4849c; margin-bottom: 1rem;">Never Miss Your Dream Home</h2>
+            <p class="fade-in" style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Get instant alerts when new properties matching your criteria hit the market.</p>
+            
+            <div class="property-alerts-card fade-in" style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(212,132,156,0.15);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-name">Full Name *</label>
+                        <input type="text" id="alert-name" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-email">Email *</label>
+                        <input type="email" id="alert-email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-phone">Phone</label>
+                        <input type="tel" id="alert-phone" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-price">Max Price</label>
+                        <select id="alert-price" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">Any Price</option>
+                            <option value="500000">Up to $500K</option>
+                            <option value="750000">Up to $750K</option>
+                            <option value="1000000">Up to $1M</option>
+                            <option value="1500000">Up to $1.5M</option>
+                            <option value="2000000">Up to $2M</option>
+                            <option value="2000001">$2M+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-beds">Min Bedrooms</label>
+                        <select id="alert-beds" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-baths">Min Bathrooms</label>
+                        <select id="alert-baths" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="alert-type">Property Type</label>
+                        <select id="alert-type" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="">Any Type</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
+                            <option value="townhouse">Townhouse</option>
+                            <option value="land">Land</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="text-align: left; margin-bottom: 2rem;">
+                    <label for="alert-neighborhoods">Preferred Neighborhoods (Optional)</label>
+                    <input type="text" id="alert-neighborhoods" placeholder="e.g., Downtown, Oakwood, Riverside" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                
+                <button class="btn" onclick="submitPropertyAlerts()" style="width: 100%; padding: 1.2rem; font-size: 1.1rem;">
+                    🔔 Start Getting Property Alerts
+                </button>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #999;">
+                    We respect your privacy. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <h2 class="fade-in">What Clients Say</h2>
         <div class="testimonials-grid">
             <div class="testimonial-card fade-in stagger-1">
                 <div class="testimonial-text">
-                    "Jenny made our home buying experience seamless and stress-free. Her knowledge of the market and dedication to finding us the perfect home was exceptional."
+                    "Jane made our home buying experience seamless and stress-free. Her knowledge of the market and dedication to finding us the perfect home was exceptional."
                 </div>
                 <div class="testimonial-author">— Sarah & Michael T.</div>
             </div>
             <div class="testimonial-card fade-in stagger-2">
                 <div class="testimonial-text">
-                    "We couldn't have asked for a better realtor. Jenny sold our home above asking price in less than a week. Her marketing strategy was brilliant!"
+                    "We couldn't have asked for a better realtor. Jane sold our home above asking price in less than a week. Her marketing strategy was brilliant!"
                 </div>
                 <div class="testimonial-author">— Robert L.</div>
             </div>
             <div class="testimonial-card fade-in stagger-3">
                 <div class="testimonial-text">
-                    "Professional, responsive, and genuinely caring. Jenny went above and beyond to ensure we found a home that checked all our boxes. Highly recommend!"
+                    "Professional, responsive, and genuinely caring. Jane went above and beyond to ensure we found a home that checked all our boxes. Highly recommend!"
                 </div>
                 <div class="testimonial-author">— Jennifer K.</div>
             </div>
