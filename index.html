@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Doe - Luxury Real Estate Agent</title>
+    <title>Jenny Filkins - Luxury Real Estate Agent</title>
     <style>
         * {
             margin: 0;
@@ -39,7 +39,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         nav ul {
@@ -55,7 +55,7 @@
         }
 
         nav a:hover {
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         /* Hero Section */
@@ -86,7 +86,7 @@
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: #2c5f7c;
+            background: #d4849c;
             color: white;
             text-decoration: none;
             border-radius: 4px;
@@ -97,7 +97,7 @@
         }
 
         .btn:hover {
-            background: #1e4459;
+            background: #c06d87;
         }
 
         /* Sections */
@@ -111,7 +111,7 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: #2c5f7c;
+            color: #d4849c;
             font-weight: 300;
         }
 
@@ -126,7 +126,7 @@
         .about-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(rgba(44,95,124,0.1), rgba(44,95,124,0.1)),
+            background: linear-gradient(rgba(212,132,156,0.1), rgba(212,132,156,0.1)),
                         url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800') center/cover;
             border-radius: 8px;
         }
@@ -168,7 +168,7 @@
 
         .property-price {
             font-size: 1.5rem;
-            color: #2c5f7c;
+            color: #d4849c;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
@@ -204,13 +204,67 @@
 
         .testimonial-author {
             font-weight: bold;
-            color: #2c5f7c;
+            color: #d4849c;
         }
 
         /* Contact Form */
-        .contact-container {
-            max-width: 600px;
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h3 {
+            color: #d4849c;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card > p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .booking-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .booking-info ul {
+            list-style-position: inside;
+            margin-top: 0.5rem;
+        }
+
+        .booking-info li {
+            padding: 0.3rem 0;
+        }
+
+        .form-embed {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .form-embed iframe {
+            display: block;
+        }
+
+        .bookings-embed {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         .form-group {
@@ -239,7 +293,7 @@
 
         /* Footer */
         footer {
-            background: #2c5f7c;
+            background: #d4849c;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -264,6 +318,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .contact-options {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
             h2 {
                 font-size: 2rem;
             }
@@ -278,7 +337,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">JANE DOE</div>
+            <div class="logo">Jenny Filkins</div>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -374,33 +433,55 @@
     <!-- Contact Section -->
     <section id="contact">
         <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+        
+        <!-- Two Column Layout for Contact Options -->
+        <div class="contact-options">
+            <!-- Quick Contact Form -->
+            <div class="contact-card">
+                <h3>Send a Quick Message</h3>
+                <p>Have a question? Send me a message and I'll get back to you as soon as possible.</p>
+                <div class="form-embed">
+                    <iframe width="100%" height="600px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=D0kvBt59E0CKoP_H7hlLBX8bDnGtGZpOpkb7gAhlmslUMDVPMlRTNTBFREpMNEFMQ1NYUFNTMVI2TS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- Booking Section -->
+            <div class="contact-card">
+                <h3>Schedule a Consultation</h3>
+                <p>Ready to discuss your real estate needs? Book a time that works best for you.</p>
+                
+                <div class="booking-info">
+                    <p><strong>Available Services:</strong></p>
+                    <ul>
+                        <li>Initial Consultation (30 min)</li>
+                        <li>Property Viewing</li>
+                        <li>Market Analysis Review</li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone">
+                
+                <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn" style="display: inline-block; margin-top: 1rem;">
+                    Schedule Appointment
+                </a>
+                
+                <!-- Alternative: Embed Bookings iframe (uncomment to use) -->
+                <!--
+                <div class="bookings-embed">
+                    <iframe src="YOUR_BOOKINGS_EMBED_URL" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0" 
+                            style="border:none; margin-top: 1rem;">
+                    </iframe>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
+                -->
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Jane Doe Real Estate. All rights reserved.</p>
-        <p>Email: jane@example.com | Phone: (555) 123-4567</p>
+        <p>&copy; 2025 Jenny Filkins Real Estate. All rights reserved.</p>
+        <p>Email: jenny@jennyfilkins.com | Phone: (843) 441-6775</p>
     </footer>
 
     <script>
