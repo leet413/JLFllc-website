@@ -15,7 +15,25 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            overflow-x: hidden;
         }
+
+        /* Fade-in animation for scroll effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay for grid items */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
 
         /* Navigation */
         nav {
@@ -26,6 +44,14 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transform: translateY(-100px);
+            animation: slideDown 0.6s ease forwards;
+        }
+
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+            }
         }
 
         nav .container {
@@ -51,11 +77,13 @@
         nav a {
             text-decoration: none;
             color: #333;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
         }
 
         nav a:hover {
             color: #d4849c;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -69,6 +97,7 @@
             text-align: center;
             color: white;
             margin-top: 60px;
+            background-attachment: fixed;
         }
 
         .hero-content h1 {
@@ -76,11 +105,28 @@
             margin-bottom: 1rem;
             font-weight: 300;
             letter-spacing: 2px;
+            animation: fadeInUp 1s ease 0.3s both;
         }
 
         .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-content .btn {
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn {
@@ -90,14 +136,36 @@
             color: white;
             text-decoration: none;
             border-radius: 4px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn:hover {
             background: #c06d87;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212,132,156,0.3);
         }
 
         /* Sections */
@@ -149,17 +217,23 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.4s ease;
         }
 
         .property-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(212,132,156,0.3);
         }
 
         .property-image {
             height: 250px;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .property-card:hover .property-image {
+            transform: scale(1.1);
         }
 
         .property-info {
@@ -194,6 +268,12 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(212,132,156,0.2);
         }
 
         .testimonial-text {
@@ -227,11 +307,27 @@
             color: #d4849c;
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+        }
+
+        .contact-card.visible h3 {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .contact-card > p {
             margin-bottom: 1.5rem;
             color: #666;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+        }
+
+        .contact-card.visible > p {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .booking-info {
@@ -239,6 +335,14 @@
             padding: 1.5rem;
             border-radius: 4px;
             margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+
+        .contact-card.visible .booking-info {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .booking-info ul {
@@ -255,6 +359,14 @@
             border-radius: 8px;
             overflow: hidden;
             background: #f8f9fa;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+
+        .contact-card.visible .form-embed {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .form-embed iframe {
@@ -284,6 +396,13 @@
             border-radius: 4px;
             font-size: 1rem;
             font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #d4849c;
+            box-shadow: 0 0 0 3px rgba(212,132,156,0.1);
         }
 
         textarea {
@@ -352,18 +471,18 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Find Your Dream Home</h1>
-            <p>Luxury Real Estate Expert in [Your City]</p>
+            <p>Luxury Real Estate Expert on Hilton Head Island</p>
             <a href="#contact" class="btn">Get In Touch</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
+        <h2 class="fade-in">About Me</h2>
         <div class="about-content">
-            <div class="about-image"></div>
-            <div class="about-text">
-                <p>With over [X] years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
+            <div class="about-image fade-in"></div>
+            <div class="about-text fade-in">
+                <p>With years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
                 <p>My commitment to excellence, attention to detail, and deep knowledge of the local market ensures that whether you're buying or selling, you'll receive the personalized service you deserve.</p>
                 <p>Let's work together to make your real estate goals a reality.</p>
                 <a href="#contact" class="btn">Schedule a Consultation</a>
@@ -373,9 +492,9 @@
 
     <!-- Featured Properties -->
     <section id="properties">
-        <h2>Featured Properties</h2>
+        <h2 class="fade-in">Featured Properties</h2>
         <div class="properties-grid">
-            <div class="property-card">
+            <div class="property-card fade-in stagger-1">
                 <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600')"></div>
                 <div class="property-info">
                     <div class="property-price">$1,250,000</div>
@@ -384,7 +503,7 @@
                     <div class="property-details">4 beds • 3 baths • 3,200 sq ft</div>
                 </div>
             </div>
-            <div class="property-card">
+            <div class="property-card fade-in stagger-2">
                 <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600')"></div>
                 <div class="property-info">
                     <div class="property-price">$875,000</div>
@@ -393,7 +512,7 @@
                     <div class="property-details">5 beds • 4 baths • 4,100 sq ft</div>
                 </div>
             </div>
-            <div class="property-card">
+            <div class="property-card fade-in stagger-3">
                 <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600')"></div>
                 <div class="property-info">
                     <div class="property-price">$650,000</div>
@@ -407,23 +526,23 @@
 
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
-        <h2>What Clients Say</h2>
+        <h2 class="fade-in">What Clients Say</h2>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card fade-in stagger-1">
                 <div class="testimonial-text">
-                    "Jane made our home buying experience seamless and stress-free. Her knowledge of the market and dedication to finding us the perfect home was exceptional."
+                    "Jenny made our home buying experience seamless and stress-free. Her knowledge of the market and dedication to finding us the perfect home was exceptional."
                 </div>
                 <div class="testimonial-author">— Sarah & Michael T.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card fade-in stagger-2">
                 <div class="testimonial-text">
-                    "We couldn't have asked for a better realtor. Jane sold our home above asking price in less than a week. Her marketing strategy was brilliant!"
+                    "We couldn't have asked for a better realtor. Jenny sold our home above asking price in less than a week. Her marketing strategy was brilliant!"
                 </div>
                 <div class="testimonial-author">— Robert L.</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card fade-in stagger-3">
                 <div class="testimonial-text">
-                    "Professional, responsive, and genuinely caring. Jane went above and beyond to ensure we found a home that checked all our boxes. Highly recommend!"
+                    "Professional, responsive, and genuinely caring. Jenny went above and beyond to ensure we found a home that checked all our boxes. Highly recommend!"
                 </div>
                 <div class="testimonial-author">— Jennifer K.</div>
             </div>
@@ -432,12 +551,12 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Get In Touch</h2>
+        <h2 class="fade-in">Get In Touch</h2>
         
         <!-- Two Column Layout for Contact Options -->
         <div class="contact-options">
             <!-- Quick Contact Form -->
-            <div class="contact-card">
+            <div class="contact-card fade-in stagger-1">
                 <h3>Send a Quick Message</h3>
                 <p>Have a question? Send me a message and I'll get back to you as soon as possible.</p>
                 <div class="form-embed">
@@ -446,7 +565,7 @@
             </div>
 
             <!-- Booking Section -->
-            <div class="contact-card">
+            <div class="contact-card fade-in stagger-2">
                 <h3>Schedule a Consultation</h3>
                 <p>Ready to discuss your real estate needs? Book a time that works best for you.</p>
                 
@@ -497,6 +616,25 @@
                     });
                 }
             });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
