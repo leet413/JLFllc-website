@@ -796,4 +796,21 @@
 
             const subject = encodeURIComponent('Property Alert Signup - ' + formData.name);
             const body = encodeURIComponent(
-                `NEW PROPERTY ALERT SIGNUP
+                `NEW PROPERTY ALERT SIGNUP\n\n` +
+                `Name: ${formData.name}\n` +
+                `Email: ${formData.email}\n` +
+                `Phone: ${formData.phone || 'Not provided'}\n\n` +
+                `PROPERTY PREFERENCES:\n` +
+                `Max Price: ${priceText}\n` +
+                `Bedrooms: ${bedsText}\n` +
+                `Bathrooms: ${bathsText}\n` +
+                `Property Type: ${typeText}\n` +
+                `Neighborhoods: ${neighborhoodsText}\n\n` +
+                `Please add this contact to the Property Alerts list in Constant Contact.`
+            );
+
+            window.location.href = `mailto:jenny@jennyfilkins.com?subject=${subject}&body=${body}`;
+            
+            alert('Thank you! Opening email to complete your property alert signup.');
+        }
+    </script>
