@@ -65,7 +65,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #d4849c;
+            color: #6d5c7d;
         }
 
         nav ul {
@@ -82,14 +82,14 @@
         }
 
         nav a:hover {
-            color: #d4849c;
+            color: #6d5c7d;
             transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+            background: linear-gradient(rgba(109,92,125,0.4), rgba(109,92,125,0.4)), 
                         url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600') center/cover;
             display: flex;
             align-items: center;
@@ -118,14 +118,6 @@
             animation: fadeInUp 1s ease 0.9s both;
         }
 
-        .hero-search-widget {
-            animation: fadeInUp 1s ease 1.2s both;
-            margin-top: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -140,7 +132,7 @@
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: #d4849c;
+            background: #6d5c7d;
             color: white;
             text-decoration: none;
             border-radius: 4px;
@@ -171,9 +163,9 @@
         }
 
         .btn:hover {
-            background: #c06d87;
+            background: #5a4a67;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212,132,156,0.3);
+            box-shadow: 0 10px 20px rgba(109,92,125,0.3);
         }
 
         /* Sections */
@@ -187,13 +179,13 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-            color: #d4849c;
+            color: #6d5c7d;
             font-weight: 300;
         }
 
         /* IDX Search Section */
         .idx-search-section {
-            background: linear-gradient(135deg, #fdf5f7 0%, #f8e8ed 100%);
+            background: linear-gradient(135deg, #f6e5f0 0%, #fdf5f7 100%);
             padding: 5rem 5%;
             margin: 0;
         }
@@ -207,7 +199,7 @@
             background: white;
             padding: 2rem;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(212,132,156,0.15);
+            box-shadow: 0 10px 40px rgba(109,92,125,0.15);
             min-height: 600px;
         }
 
@@ -222,7 +214,7 @@
         .about-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(rgba(212,132,156,0.1), rgba(212,132,156,0.1)),
+            background: linear-gradient(rgba(109,92,125,0.1), rgba(109,92,125,0.1)),
                         url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800') center/cover;
             border-radius: 8px;
         }
@@ -250,7 +242,7 @@
 
         .property-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(212,132,156,0.3);
+            box-shadow: 0 12px 30px rgba(109,92,125,0.3);
         }
 
         .property-image {
@@ -270,7 +262,7 @@
 
         .property-price {
             font-size: 1.5rem;
-            color: #d4849c;
+            color: #6d5c7d;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
@@ -282,7 +274,7 @@
 
         /* Testimonials */
         .testimonials {
-            background: #f8f9fa;
+            background: #f6e5f0;
         }
 
         .testimonials-grid {
@@ -301,7 +293,7 @@
 
         .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(212,132,156,0.2);
+            box-shadow: 0 8px 20px rgba(109,92,125,0.2);
         }
 
         .testimonial-text {
@@ -312,7 +304,7 @@
 
         .testimonial-author {
             font-weight: bold;
-            color: #d4849c;
+            color: #6d5c7d;
         }
 
         /* Contact Form */
@@ -332,7 +324,7 @@
         }
 
         .contact-card h3 {
-            color: #d4849c;
+            color: #6d5c7d;
             margin-bottom: 1rem;
             font-size: 1.5rem;
             opacity: 0;
@@ -359,7 +351,7 @@
         }
 
         .booking-info {
-            background: #f8f9fa;
+            background: #f6e5f0;
             padding: 1.5rem;
             border-radius: 4px;
             margin-top: 1rem;
@@ -386,7 +378,7 @@
             margin-top: 1rem;
             border-radius: 8px;
             overflow: hidden;
-            background: #f8f9fa;
+            background: #f6e5f0;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
@@ -429,8 +421,8 @@
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #d4849c;
-            box-shadow: 0 0 0 3px rgba(212,132,156,0.1);
+            border-color: #6d5c7d;
+            box-shadow: 0 0 0 3px rgba(109,92,125,0.1);
         }
 
         textarea {
@@ -440,7 +432,7 @@
 
         /* Footer */
         footer {
-            background: #d4849c;
+            background: #6d5c7d;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -468,14 +460,6 @@
             .contact-options {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            #property-alerts div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
-
-            #property-alerts div[style*="grid-template-columns: 1fr 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
             }
 
             h2 {
@@ -510,11 +494,6 @@
             <h1>Find Your Dream Home</h1>
             <p>Luxury Real Estate Expert on Hilton Head Island</p>
             <a href="#search" class="btn">Search Properties</a>
-            
-            <!-- Quick Search Widget in Hero -->
-            <div class="hero-search-widget">
-                <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-132328" src="//jennyfilkins.idxbroker.com/idx/widgets/132328"></script>
-            </div>
         </div>
     </section>
 
@@ -535,13 +514,13 @@
     <!-- IDX Map Search Section -->
     <section id="search" class="idx-search-section">
         <div class="idx-search-container">
-            <h2 class="fade-in" style="color: #d4849c; margin-bottom: 2rem;">Search All Available Properties</h2>
+            <h2 class="fade-in" style="color: #6d5c7d; margin-bottom: 2rem;">Search All Available Properties</h2>
             <p class="fade-in" style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
                 Explore homes on Hilton Head Island with our interactive map search
             </p>
             <div class="idx-widget-container fade-in">
                 <!-- IDX Broker Widget Will Load Here -->
-                <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-132328-full" src="//jennyfilkins.idxbroker.com/idx/widgets/132328"></script>
+                <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-132328" src="//jennyfilkins.idxbroker.com/idx/widgets/132328"></script>
             </div>
         </div>
     </section>
@@ -576,93 +555,6 @@
                     <p>Updated home in walkable downtown location</p>
                     <div class="property-details">3 beds • 2.5 baths • 2,400 sq ft</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Property Alerts Section -->
-    <section id="property-alerts" style="background: linear-gradient(135deg, #f8e8ed 0%, #fdf5f7 100%); padding: 5rem 5%; margin: 0;">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 class="fade-in" style="color: #d4849c; margin-bottom: 1rem;">Never Miss Your Dream Home</h2>
-            <p class="fade-in" style="font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Get instant alerts when new properties matching your criteria hit the market.</p>
-            
-            <div class="property-alerts-card fade-in" style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 40px rgba(212,132,156,0.15);">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-name">Full Name *</label>
-                        <input type="text" id="alert-name" required>
-                    </div>
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-email">Email *</label>
-                        <input type="email" id="alert-email" required>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-phone">Phone</label>
-                        <input type="tel" id="alert-phone">
-                    </div>
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-price">Max Price</label>
-                        <select id="alert-price">
-                            <option value="">Any Price</option>
-                            <option value="500000">Up to $500K</option>
-                            <option value="750000">Up to $750K</option>
-                            <option value="1000000">Up to $1M</option>
-                            <option value="1500000">Up to $1.5M</option>
-                            <option value="2000000">Up to $2M</option>
-                            <option value="2000001">$2M+</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-beds">Min Bedrooms</label>
-                        <select id="alert-beds">
-                            <option value="">Any</option>
-                            <option value="1">1+</option>
-                            <option value="2">2+</option>
-                            <option value="3">3+</option>
-                            <option value="4">4+</option>
-                            <option value="5">5+</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-baths">Min Bathrooms</label>
-                        <select id="alert-baths">
-                            <option value="">Any</option>
-                            <option value="1">1+</option>
-                            <option value="2">2+</option>
-                            <option value="3">3+</option>
-                            <option value="4">4+</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="text-align: left;">
-                        <label for="alert-type">Property Type</label>
-                        <select id="alert-type">
-                            <option value="">Any Type</option>
-                            <option value="house">House</option>
-                            <option value="condo">Condo</option>
-                            <option value="townhouse">Townhouse</option>
-                            <option value="land">Land</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group" style="text-align: left; margin-bottom: 2rem;">
-                    <label for="alert-neighborhoods">Preferred Neighborhoods (Optional)</label>
-                    <input type="text" id="alert-neighborhoods" placeholder="e.g., Sea Pines, Palmetto Dunes, Shipyard">
-                </div>
-                
-                <button class="btn" onclick="submitPropertyAlerts()" style="width: 100%; padding: 1.2rem; font-size: 1.1rem;">
-                    🔔 Start Getting Property Alerts
-                </button>
-                
-                <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #999;">
-                    We respect your privacy. Unsubscribe anytime.
-                </p>
             </div>
         </div>
     </section>
@@ -767,50 +659,6 @@
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
         });
-
-        // Property Alerts Form Submission
-        function submitPropertyAlerts() {
-            const formData = {
-                name: document.getElementById('alert-name').value,
-                email: document.getElementById('alert-email').value,
-                phone: document.getElementById('alert-phone').value,
-                maxPrice: document.getElementById('alert-price').value,
-                minBeds: document.getElementById('alert-beds').value,
-                minBaths: document.getElementById('alert-baths').value,
-                propertyType: document.getElementById('alert-type').value,
-                neighborhoods: document.getElementById('alert-neighborhoods').value
-            };
-
-            // Validate required fields
-            if (!formData.name || !formData.email) {
-                alert('Please fill in your name and email address.');
-                return;
-            }
-
-            // Create email body
-            const priceText = formData.maxPrice ? `Up to $${parseInt(formData.maxPrice).toLocaleString()}` : 'Any Price';
-            const bedsText = formData.minBeds ? `${formData.minBeds}+ bedrooms` : 'Any bedrooms';
-            const bathsText = formData.minBaths ? `${formData.minBaths}+ bathrooms` : 'Any bathrooms';
-            const typeText = formData.propertyType ? formData.propertyType : 'Any type';
-            const neighborhoodsText = formData.neighborhoods ? formData.neighborhoods : 'No preference';
-
-            const subject = encodeURIComponent('Property Alert Signup - ' + formData.name);
-            const body = encodeURIComponent(
-                `NEW PROPERTY ALERT SIGNUP\n\n` +
-                `Name: ${formData.name}\n` +
-                `Email: ${formData.email}\n` +
-                `Phone: ${formData.phone || 'Not provided'}\n\n` +
-                `PROPERTY PREFERENCES:\n` +
-                `Max Price: ${priceText}\n` +
-                `Bedrooms: ${bedsText}\n` +
-                `Bathrooms: ${bathsText}\n` +
-                `Property Type: ${typeText}\n` +
-                `Neighborhoods: ${neighborhoodsText}\n\n` +
-                `Please add this contact to the Property Alerts list in Constant Contact.`
-            );
-
-            window.location.href = `mailto:jenny@jennyfilkins.com?subject=${subject}&body=${body}`;
-            
-            alert('Thank you! Opening email to complete your property alert signup.');
-        }
     </script>
+</body>
+</html>
