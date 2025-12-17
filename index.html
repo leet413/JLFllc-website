@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jenny Filkins - Luxury Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Precise flat color from your logo for seamless blending */
+            --brand-pink: #e2d1db; 
+            --brand-purple: #6d5c7d;
+            --brand-text-gray: #706363;
+            --font-serif: 'Playfair Display', serif;
+            --font-script: 'Pinyon Script', cursive;
+            --font-sans: 'Montserrat', sans-serif;
+            --glow-white: rgba(255, 255, 255, 0.9);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,21 +24,53 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-sans);
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background-color: #fff;
         }
 
-        /* Navigation - Updated for Luxury Feel */
+        /* --- Refined Pop-In Animations --- */
+        @keyframes luxuryPopIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .pop-title {
+            opacity: 0;
+            animation: luxuryPopIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        .pop-subtitle {
+            opacity: 0;
+            animation: luxuryPopIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 1.2s;
+        }
+
+        .pop-button {
+            opacity: 0;
+            animation: luxuryPopIn 1.0s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 2.0s;
+        }
+
+        /* --- Seamless Header --- */
         nav {
-            background: #ffffff;
-            padding: 1.2rem 5%;
+            background-color: var(--brand-pink); /* Flat color for seamless logo integration */
+            padding: 0.5rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 1px 0px rgba(0,0,0,0.05);
+            /* Extremely soft, wide-spread shadow as requested */
+            box-shadow: 0 15px 50px -10px rgba(109, 92, 125, 0.3);
         }
 
         nav .container {
@@ -37,106 +81,180 @@
             margin: 0 auto;
         }
 
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #2c3e50;
+        .logo-img {
+            height: 75px;
+            width: auto;
+            display: block;
         }
 
+        /* Nav Interactive Glows */
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         nav a {
             text-decoration: none;
-            color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: var(--brand-text-gray);
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            letter-spacing: 1.5px;
+            padding: 10px 15px;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: #6d5c7d;
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0%;
+            height: 0%;
+            background: radial-gradient(circle, var(--glow-white) 0%, transparent 75%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.4s ease, height 0.4s ease;
+            border-radius: 50%;
         }
 
-        /* IDX Wrapper Container */
-        /* This padding ensures the IDX map starts below the fixed nav */
-        #idx-wrapper-main-content {
-            padding-top: 80px; 
-            min-height: 85vh;
-            width: 100%;
+        nav a:hover::before {
+            width: 180%;
+            height: 180%;
         }
 
-        /* Simplified Contact Section (Removed MS Form) */
-        .contact-cta {
-            background: #f9f9f9;
-            padding: 5rem 5%;
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-top: 1px solid #eee;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600') center/cover no-repeat;
+            background-attachment: fixed;
         }
 
-        .contact-cta h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-weight: 300;
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
-        .contact-cta p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: #666;
+        .hero-content .accent-script {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 2.5rem;
+            text-transform: lowercase;
         }
 
+        /* Interactive Button Glow */
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #2c3e50;
+            padding: 1.2rem 3.5rem;
+            background: var(--brand-purple);
             color: white;
             text-decoration: none;
             border-radius: 2px;
-            font-size: 0.9rem;
+            transition: all 0.4s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            position: relative;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 140%; height: 200%;
+            background: radial-gradient(circle, var(--glow-white) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
         }
 
         .btn:hover {
-            background: #6d5c7d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
+        /* IDX CONTENT AREA */
+        #idx-wrapper-content {
+            width: 100%;
+            background: #fff;
+            padding-top: 40px;
+        }
+
+        /* --- Generic Sections --- */
+        section {
+            padding: 8rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
             text-align: center;
-            padding: 3rem 2rem;
+            color: var(--brand-purple);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 5px;
         }
 
-        footer p {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
+        /* Seamless Footer */
+        footer {
+            background-color: var(--brand-pink);
+            color: var(--brand-text-gray);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 10;
+            /* Pronounced upward soft shadow */
+            box-shadow: 0 -15px 60px -10px rgba(109, 92, 125, 0.4);
         }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } /* Consider a mobile menu for production */
-            .logo { font-size: 1.1rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content .accent-script { font-size: 2.5rem; }
+            nav ul { display: none; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="container">
-            <div class="logo">Jenny Filkins</div>
+            <a href="/"><img src="Updated Logo.png" alt="Jenny Filkins Logo" class="logo-img"></a>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/#about">About</a></li>
@@ -146,19 +264,52 @@
         </div>
     </nav>
 
-    <div id="idx-wrapper-main-content">
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="pop-title">Find Your Dream Home</h1>
+            <span class="accent-script pop-subtitle">luxury real estate expert</span>
+            <div class="pop-button">
+                <a href="https://jennyfilkins.idxbroker.com/idx/map/mapsearch" class="btn">Search Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="idx-wrapper-content">
         [idx-content]
     </div>
 
-    <section id="contact" class="contact-cta">
-        <h2>Schedule a Private Consultation</h2>
-        <p>Expert guidance for the Hilton Head Island luxury market. Book a time that works best for you.</p>
-        
-        <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn">
-            Book Appointment
-        </a>
+    <section id="about" class="fade-in">
+        <h2>Experience Excellence</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+            <div style="width: 100%; height: 600px; background: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800') center/cover; border-radius: 2px;"></div>
+            <div>
+                <p style="font-size: 1.15rem; margin-bottom: 2rem; color: #555;">With years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
+                <p style="font-size: 1.15rem; margin-bottom: 2.5rem; color: #555;">My commitment to excellence and deep knowledge of the local market ensures you'll receive the personalized service you deserve.</p>
+                <a href="#contact" class="btn">Work With Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center; background-color: #fafafa; padding: 8rem 5%;" class="fade-in">
+        <h2>Let's Connect</h2>
+        <p style="margin-bottom: 3rem; color: var(--brand-text-gray); font-size: 1.3rem; font-family: var(--font-serif);">Schedule a private consultation at your convenience.</p>
+        <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn">Book Appointment</a>
     </section>
 
     <footer>
-        <p>&copy; 2025 Jenny Filkins Real Estate. All rights reserved.</p>
-        <p>Email: jenny@jennyfilkins.com | Phone: (843) 441-6775</p>
+        <p style="letter-spacing: 4px; margin-bottom: 1.5rem; text-transform: uppercase; font-size: 1.3rem; font-family: var(--font-serif);">Jenny Filkins Real Estate</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">&copy; 2025 All rights reserved.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">jenny@jennyfilkins.com | (843) 441-6775</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
