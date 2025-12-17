@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Updated to your requested hex color */
             --brand-pink: #f6e5f0; 
             --brand-purple: #6d5c7d;
             --brand-text-gray: #706363;
@@ -27,7 +26,7 @@
             background-color: #fff;
         }
 
-        /* --- BACKGROUND SLIDESHOW (Right-to-Left Wipe) --- */
+        /* --- SOFT CROSS-FADE SLIDESHOW --- */
         .slideshow-container {
             position: fixed;
             top: 0;
@@ -46,23 +45,22 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            /* The Wipe Effect */
-            transform: translateX(100%);
-            animation: wipeAnimation 24s infinite;
+            /* Combined Fade & Scale for a "Soft Wipe" feel */
+            animation: softDissolve 24s infinite;
         }
 
-        /* Ensure these paths match your folder: content/slideshow/ */
-        .slide:nth-child(1) { background-image: url('content/slideshow/slide0.jpg'); animation-delay: 0s; }
-        .slide:nth-child(2) { background-image: url('content/slideshow/slide1.jpg'); animation-delay: 6s; }
-        .slide:nth-child(3) { background-image: url('content/slideshow/slide2.jpg'); animation-delay: 12s; }
-        .slide:nth-child(4) { background-image: url('content/slideshow/slide3.jpg'); animation-delay: 18s; }
+        /* Update paths to match your folder: content/slideshow/ */
+        .slide:nth-child(1) { background-image: url('content/slideshow/image1.jpg'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: url('content/slideshow/image2.jpg'); animation-delay: 6s; }
+        .slide:nth-child(3) { background-image: url('content/slideshow/image3.jpg'); animation-delay: 12s; }
+        .slide:nth-child(4) { background-image: url('content/slideshow/image4.jpg'); animation-delay: 18s; }
 
-        @keyframes wipeAnimation {
-            0% { opacity: 0; transform: translateX(100%); }
-            5% { opacity: 1; transform: translateX(0); }
-            25% { opacity: 1; transform: translateX(0); }
-            30% { opacity: 0; transform: translateX(-100%); }
-            100% { opacity: 0; transform: translateX(-100%); }
+        @keyframes softDissolve {
+            0% { opacity: 0; transform: scale(1.0); }
+            5% { opacity: 1; }
+            25% { opacity: 1; }
+            30% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 0; }
         }
 
         .hero-overlay {
@@ -83,9 +81,10 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            /* Pronounced soft edge shadow */
             box-shadow: 0 15px 45px rgba(109, 92, 125, 0.2);
         }
+
+        .logo-img { height: 75px; width: auto; display: block; }
 
         nav .container {
             display: flex;
@@ -94,8 +93,6 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
-        .logo-img { height: 75px; width: auto; display: block; }
 
         nav ul { display: flex; list-style: none; gap: 1.5rem; }
 
@@ -109,10 +106,10 @@
             padding: 12px 18px;
             position: relative;
             z-index: 2;
-            transition: color 0.4s ease, transform 0.3s ease;
+            transition: color 0.4s ease;
         }
 
-        /* Nav Soft White Glow Reaction */
+        /* Nav Hover Glow */
         nav a::before {
             content: '';
             position: absolute;
@@ -127,10 +124,10 @@
             filter: blur(8px);
         }
 
-        nav a:hover { color: var(--brand-purple); transform: translateY(-2px); }
+        nav a:hover { color: var(--brand-purple); }
         nav a:hover::before { width: 140%; height: 140%; opacity: 1; }
 
-        /* --- Hero Content staggered entrance --- */
+        /* --- Hero Content --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -149,7 +146,7 @@
         .pop-subtitle { opacity: 0; animation: luxuryPop 1.4s ease forwards; animation-delay: 1.4s; font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2.5rem; }
         .pop-button { opacity: 0; animation: luxuryPop 1.2s ease forwards; animation-delay: 2.2s; }
 
-        /* --- Button Style & Glow --- */
+        /* --- Button Glow --- */
         .btn {
             display: inline-block;
             padding: 1.2rem 3.5rem;
@@ -181,7 +178,7 @@
         .btn:hover { transform: translateY(-3px); background: #5a4a67; }
         .btn:hover::after { opacity: 1; }
 
-        /* --- Structure --- */
+        /* --- Content Layout --- */
         #idx-wrapper-content { width: 100%; background: #fff; padding-top: 40px; }
         section { padding: 8rem 5%; max-width: 1200px; margin: 0 auto; background: #fff; }
         
