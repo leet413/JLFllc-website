@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenny Filkins - Luxury Real Estate Agent</title>
+    <title>Jenny Filkins - Real Estate Search</title>
     <style>
         * {
             margin: 0;
@@ -15,25 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
         }
-
-        /* Fade-in animation for scroll effects */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Stagger delay for grid items */
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
 
         /* Navigation */
         nav {
@@ -44,14 +26,6 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transform: translateY(-100px);
-            animation: slideDown 0.6s ease forwards;
-        }
-
-        @keyframes slideDown {
-            to {
-                transform: translateY(0);
-            }
         }
 
         nav .container {
@@ -77,56 +51,20 @@
         nav a {
             text-decoration: none;
             color: #333;
-            transition: color 0.3s, transform 0.3s;
-            display: inline-block;
+            transition: color 0.3s;
         }
 
         nav a:hover {
             color: #6d5c7d;
-            transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(109,92,125,0.4), rgba(109,92,125,0.4)), 
-                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 60px;
-            background-attachment: fixed;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .hero-content .btn {
-            animation: fadeInUp 1s ease 0.9s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* IDX Wrapper Specific Styling */
+        #idx-wrapper-container {
+            padding-top: 100px; /* Space for fixed nav */
+            min-height: 80vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 50px;
         }
 
         .btn {
@@ -137,297 +75,11 @@
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
         }
 
         .btn:hover {
             background: #5a4a67;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(109,92,125,0.3);
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #6d5c7d;
-            font-weight: 300;
-        }
-
-        /* IDX Search Section */
-        .idx-search-section {
-            background: linear-gradient(135deg, #f6e5f0 0%, #fdf5f7 100%);
-            padding: 5rem 5%;
-            margin: 0;
-        }
-
-        .idx-search-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .idx-widget-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(109,92,125,0.15);
-            min-height: 600px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(rgba(109,92,125,0.1), rgba(109,92,125,0.1)),
-                        url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800') center/cover;
-            border-radius: 8px;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        /* Featured Properties */
-        .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .property-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-        }
-
-        .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(109,92,125,0.3);
-        }
-
-        .property-image {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.5s ease;
-        }
-
-        .property-card:hover .property-image {
-            transform: scale(1.1);
-        }
-
-        .property-info {
-            padding: 1.5rem;
-        }
-
-        .property-price {
-            font-size: 1.5rem;
-            color: #6d5c7d;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .property-details {
-            color: #666;
-            margin-top: 1rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: #f6e5f0;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(109,92,125,0.2);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #6d5c7d;
-        }
-
-        /* Contact Form */
-        .contact-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-
-        .contact-card h3 {
-            color: #6d5c7d;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-        }
-
-        .contact-card.visible h3 {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .contact-card > p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-        }
-
-        .contact-card.visible > p {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .booking-info {
-            background: #f6e5f0;
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-top: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
-        }
-
-        .contact-card.visible .booking-info {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .booking-info ul {
-            list-style-position: inside;
-            margin-top: 0.5rem;
-        }
-
-        .booking-info li {
-            padding: 0.3rem 0;
-        }
-
-        .form-embed {
-            margin-top: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #f6e5f0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
-        }
-
-        .contact-card.visible .form-embed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .form-embed iframe {
-            display: block;
-        }
-
-        .bookings-embed {
-            margin-top: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #6d5c7d;
-            box-shadow: 0 0 0 3px rgba(109,92,125,0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
         }
 
         /* Footer */
@@ -435,182 +87,52 @@
             background: #6d5c7d;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            margin-top: 50px;
         }
 
-        /* Mobile Responsive */
+        .footer-info {
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-options {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 3rem 5%;
-            }
+            nav ul { gap: 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="container">
             <div class="logo">Jenny Filkins</div>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#search">Search</a></li>
-                <li><a href="#properties">Properties</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://yourdomain.com/#home">Home</a></li>
+                <li><a href="https://yourdomain.com/#about">About</a></li>
+                <li><a href="https://jennyfilkins.idxbroker.com/idx/map/mapsearch">Search</a></li>
+                <li><a href="https://yourdomain.com/#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Find Your Dream Home</h1>
-            <p>Luxury Real Estate Expert on Hilton Head Island</p>
-            <a href="#search" class="btn">Search Properties</a>
-        </div>
+    <div id="idx-wrapper-container">
+        [idx-content]
+    </div>
+
+    <section id="contact" style="padding: 4rem 5%; background: #f6e5f0; text-align: center;">
+        <h2 style="color: #6d5c7d; margin-bottom: 1.5rem;">Ready to Find Your Home?</h2>
+        <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            I am available for private consultations and property tours. 
+            Book a time directly on my calendar below.
+        </p>
+        <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn">
+            Schedule a Consultation
+        </a>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="fade-in">About Me</h2>
-        <div class="about-content">
-            <div class="about-image fade-in"></div>
-            <div class="about-text fade-in">
-                <p>With years of experience in luxury real estate, I'm dedicated to helping you find not just a house, but a home that perfectly matches your lifestyle and dreams.</p>
-                <p>My commitment to excellence, attention to detail, and deep knowledge of the local market ensures that whether you're buying or selling, you'll receive the personalized service you deserve.</p>
-                <p>Let's work together to make your real estate goals a reality.</p>
-                <a href="#contact" class="btn">Schedule a Consultation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
-        <h2 class="fade-in">What Clients Say</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card fade-in stagger-1">
-                <div class="testimonial-text">
-                    "Jenny made our home buying experience seamless and stress-free. Her knowledge of the market and dedication to finding us the perfect home was exceptional."
-                </div>
-                <div class="testimonial-author">— Sarah & Michael T.</div>
-            </div>
-            <div class="testimonial-card fade-in stagger-2">
-                <div class="testimonial-text">
-                    "We couldn't have asked for a better realtor. Jenny sold our home above asking price in less than a week. Her marketing strategy was brilliant!"
-                </div>
-                <div class="testimonial-author">— Robert L.</div>
-            </div>
-            <div class="testimonial-card fade-in stagger-3">
-                <div class="testimonial-text">
-                    "Professional, responsive, and genuinely caring. Jenny went above and beyond to ensure we found a home that checked all our boxes. Highly recommend!"
-                </div>
-                <div class="testimonial-author">— Jennifer K.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="fade-in">Get In Touch</h2>
-        
-        <!-- Two Column Layout for Contact Options -->
-        <div class="contact-options">
-            <!-- Quick Contact Form -->
-            <div class="contact-card fade-in stagger-1">
-                <h3>Send a Quick Message</h3>
-                <p>Have a question? Send me a message and I'll get back to you as soon as possible.</p>
-                <div class="form-embed">
-                    <iframe width="100%" height="600px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=D0kvBt59E0CKoP_H7hlLBX8bDnGtGZpOpkb7gAhlmslUMDVPMlRTNTBFREpMNEFMQ1NYUFNTMVI2TS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
-                </div>
-            </div>
-
-            <!-- Booking Section -->
-            <div class="contact-card fade-in stagger-2">
-                <h3>Schedule a Consultation</h3>
-                <p>Ready to discuss your real estate needs? Book a time that works best for you.</p>
-                
-                <div class="booking-info">
-                    <p><strong>Available Services:</strong></p>
-                    <ul>
-                        <li>Initial Consultation (30 min)</li>
-                        <li>Property Viewing</li>
-                        <li>Market Analysis Review</li>
-                    </ul>
-                </div>
-                
-                <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn" style="display: inline-block; margin-top: 1rem;">
-                    Schedule Appointment
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Jenny Filkins Real Estate. All rights reserved.</p>
-        <p>Email: jenny@jennyfilkins.com | Phone: (843) 441-6775</p>
+        <div class="footer-info">
+            <p>&copy; 2025 Jenny Filkins Real Estate. All rights reserved.</p>
+            <p>Email: jenny@jennyfilkins.com | Phone: (843) 441-6775</p>
+        </div>
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
 </body>
 </html>
