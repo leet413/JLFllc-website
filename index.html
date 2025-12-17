@@ -7,20 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-pink: #e2d1db; 
+            /* Updated to your requested hex color */
+            --brand-pink: #f6e5f0; 
             --brand-purple: #6d5c7d;
             --brand-text-gray: #706363;
             --font-serif: 'Playfair Display', serif;
             --font-script: 'Pinyon Script', cursive;
             --font-sans: 'Montserrat', sans-serif;
-            --soft-glow: rgba(255, 255, 255, 0.4);
+            --soft-glow: rgba(255, 255, 255, 0.45);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-sans);
@@ -30,31 +27,55 @@
             background-color: #fff;
         }
 
-        /* --- Luxury Pop-In Animations --- */
-        @keyframes luxuryPop {
-            0% { opacity: 0; transform: translateY(15px); }
-            100% { opacity: 1; transform: translateY(0); }
+        /* --- BACKGROUND SLIDESHOW (Right-to-Left Wipe) --- */
+        .slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            background: #000;
         }
 
-        .pop-title {
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
             opacity: 0;
-            animation: luxuryPop 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            animation-delay: 0.4s;
+            /* The Wipe Effect */
+            transform: translateX(100%);
+            animation: wipeAnimation 24s infinite;
         }
 
-        .pop-subtitle {
-            opacity: 0;
-            animation: luxuryPop 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            animation-delay: 1.4s;
+        /* Ensure these paths match your folder: content/slideshow/ */
+        .slide:nth-child(1) { background-image: url('content/slideshow/slide0.jpg'); animation-delay: 0s; }
+        .slide:nth-child(2) { background-image: url('content/slideshow/slide1.jpg'); animation-delay: 6s; }
+        .slide:nth-child(3) { background-image: url('content/slideshow/slide2.jpg'); animation-delay: 12s; }
+        .slide:nth-child(4) { background-image: url('content/slideshow/slide3.jpg'); animation-delay: 18s; }
+
+        @keyframes wipeAnimation {
+            0% { opacity: 0; transform: translateX(100%); }
+            5% { opacity: 1; transform: translateX(0); }
+            25% { opacity: 1; transform: translateX(0); }
+            30% { opacity: 0; transform: translateX(-100%); }
+            100% { opacity: 0; transform: translateX(-100%); }
         }
 
-        .pop-button {
-            opacity: 0;
-            animation: luxuryPop 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            animation-delay: 2.2s;
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: -1;
         }
 
-        /* --- Seamless Header & Shadow --- */
+        /* --- Header & Navigation --- */
         nav {
             background-color: var(--brand-pink);
             padding: 0.4rem 5%;
@@ -62,7 +83,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 10px 45px -5px rgba(109, 92, 125, 0.2);
+            /* Pronounced soft edge shadow */
+            box-shadow: 0 15px 45px rgba(109, 92, 125, 0.2);
         }
 
         nav .container {
@@ -73,22 +95,9 @@
             margin: 0 auto;
         }
 
-        .logo-img {
-            height: 75px;
-            width: auto;
-            display: block;
-        }
+        .logo-img { height: 75px; width: auto; display: block; }
 
-        /* --- Interactive Nav Link Reactions --- */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav li {
-            position: relative;
-        }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
 
         nav a {
             text-decoration: none;
@@ -98,20 +107,17 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             padding: 12px 18px;
-            display: inline-block;
             position: relative;
             z-index: 2;
             transition: color 0.4s ease, transform 0.3s ease;
         }
 
-        /* Nav Glow: Broad aura effect behind text */
+        /* Nav Soft White Glow Reaction */
         nav a::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0%;
-            height: 0%;
+            top: 50%; left: 50%;
+            width: 0%; height: 0%;
             background: radial-gradient(circle, var(--soft-glow) 0%, transparent 75%);
             transform: translate(-50%, -50%);
             z-index: -1;
@@ -121,18 +127,10 @@
             filter: blur(8px);
         }
 
-        nav a:hover {
-            color: var(--brand-purple);
-            transform: translateY(-2px);
-        }
+        nav a:hover { color: var(--brand-purple); transform: translateY(-2px); }
+        nav a:hover::before { width: 140%; height: 140%; opacity: 1; }
 
-        nav a:hover::before {
-            width: 140%;
-            height: 140%;
-            opacity: 1;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero Content staggered entrance --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -140,28 +138,18 @@
             justify-content: center;
             text-align: center;
             color: white;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600') center/cover no-repeat;
-            background-attachment: fixed;
         }
 
-        .hero-content h1 {
-            font-family: var(--font-serif);
-            font-size: 4.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
+        @keyframes luxuryPop {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-content .accent-script {
-            font-family: var(--font-script);
-            font-size: 3.5rem;
-            color: white;
-            display: block;
-            margin-bottom: 2.5rem;
-            text-transform: lowercase;
-        }
+        .pop-title { opacity: 0; animation: luxuryPop 1.4s ease forwards; animation-delay: 0.4s; font-family: var(--font-serif); font-size: 4.5rem; font-weight: 400; }
+        .pop-subtitle { opacity: 0; animation: luxuryPop 1.4s ease forwards; animation-delay: 1.4s; font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2.5rem; }
+        .pop-button { opacity: 0; animation: luxuryPop 1.2s ease forwards; animation-delay: 2.2s; }
 
-        /* --- Main Button Glow --- */
+        /* --- Button Style & Glow --- */
         .btn {
             display: inline-block;
             padding: 1.2rem 3.5rem;
@@ -174,9 +162,8 @@
             font-family: var(--font-serif);
             font-size: 0.9rem;
             position: relative;
-            border: none;
-            transition: transform 0.4s ease, background 0.4s ease;
             z-index: 1;
+            transition: transform 0.4s ease, background 0.4s ease;
         }
 
         .btn::after {
@@ -191,59 +178,42 @@
             transition: opacity 0.4s ease;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #5a4a67;
-        }
+        .btn:hover { transform: translateY(-3px); background: #5a4a67; }
+        .btn:hover::after { opacity: 1; }
 
-        .btn:hover::after {
-            opacity: 1;
-        }
-
-        /* IDX CONTENT AREA */
-        #idx-wrapper-content {
-            width: 100%;
-            background: #fff;
-            padding-top: 40px;
-        }
-
-        section { padding: 8rem 5%; max-width: 1200px; margin: 0 auto; }
+        /* --- Structure --- */
+        #idx-wrapper-content { width: 100%; background: #fff; padding-top: 40px; }
+        section { padding: 8rem 5%; max-width: 1200px; margin: 0 auto; background: #fff; }
         
-        .fade-in {
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
-        }
-
+        .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1.2s ease, transform 1.2s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        h2 {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            margin-bottom: 4rem;
-            text-align: center;
-            color: var(--brand-purple);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-        }
+        h2 { font-family: var(--font-serif); font-size: 2.8rem; margin-bottom: 4rem; text-align: center; color: var(--brand-purple); text-transform: uppercase; letter-spacing: 5px; }
 
-        /* --- Seamless Footer --- */
         footer {
             background-color: var(--brand-pink);
             color: var(--brand-text-gray);
             text-align: center;
             padding: 6rem 2rem;
-            box-shadow: 0 -10px 45px -5px rgba(109, 92, 125, 0.35);
+            box-shadow: 0 -20px 50px rgba(109, 92, 125, 0.25);
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content .accent-script { font-size: 2.2rem; }
+            .pop-title { font-size: 2.8rem; }
+            .pop-subtitle { font-size: 2.2rem; }
             nav ul { display: none; }
         }
     </style>
 </head>
 <body>
+
+    <div class="slideshow-container">
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+    </div>
+    <div class="hero-overlay"></div>
 
     <nav>
         <div class="container">
@@ -257,10 +227,10 @@
         </div>
     </nav>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="background: transparent;">
         <div class="hero-content">
             <h1 class="pop-title">Find Your Dream Home</h1>
-            <span class="accent-script pop-subtitle">luxury real estate expert</span>
+            <span class="pop-subtitle">luxury real estate expert</span>
             <div class="pop-button">
                 <a href="https://jennyfilkins.idxbroker.com/idx/map/mapsearch" class="btn">Search Properties</a>
             </div>
@@ -289,7 +259,7 @@
 
     <footer>
         <p style="letter-spacing: 4px; margin-bottom: 1rem; text-transform: uppercase; font-size: 1.2rem; font-family: var(--font-serif);">Jenny Filkins Real Estate</p>
-        <p style="font-size: 0.9rem; opacity: 0.8;">&copy; 2025 All rights reserved. (843) 441-6775.</p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">&copy; 2025 All rights reserved. (843) 441-6775</p>
     </footer>
 
     <script>
@@ -298,7 +268,6 @@
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
