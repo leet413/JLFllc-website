@@ -118,6 +118,14 @@
             animation: fadeInUp 1s ease 0.9s both;
         }
 
+        .hero-search-widget {
+            animation: fadeInUp 1s ease 1.2s both;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -181,6 +189,26 @@
             text-align: center;
             color: #d4849c;
             font-weight: 300;
+        }
+
+        /* IDX Search Section */
+        .idx-search-section {
+            background: linear-gradient(135deg, #fdf5f7 0%, #f8e8ed 100%);
+            padding: 5rem 5%;
+            margin: 0;
+        }
+
+        .idx-search-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .idx-widget-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(212,132,156,0.15);
+            min-height: 600px;
         }
 
         /* About Section */
@@ -389,7 +417,7 @@
             font-weight: 500;
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
@@ -399,7 +427,7 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #d4849c;
             box-shadow: 0 0 0 3px rgba(212,132,156,0.1);
@@ -468,6 +496,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#search">Search</a></li>
                 <li><a href="#properties">Properties</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -479,8 +508,13 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Find Your Dream Home</h1>
-            <p>Luxury Real Estate Expert on Hilton Head Island.</p>
-            <a href="#contact" class="btn">Get In Touch</a>
+            <p>Luxury Real Estate Expert on Hilton Head Island</p>
+            <a href="#search" class="btn">Search Properties</a>
+            
+            <!-- Quick Search Widget in Hero -->
+            <div class="hero-search-widget">
+                <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-132328" src="//jennyfilkins.idxbroker.com/idx/widgets/132328"></script>
+            </div>
         </div>
     </section>
 
@@ -494,6 +528,20 @@
                 <p>My commitment to excellence, attention to detail, and deep knowledge of the local market ensures that whether you're buying or selling, you'll receive the personalized service you deserve.</p>
                 <p>Let's work together to make your real estate goals a reality.</p>
                 <a href="#contact" class="btn">Schedule a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDX Map Search Section -->
+    <section id="search" class="idx-search-section">
+        <div class="idx-search-container">
+            <h2 class="fade-in" style="color: #d4849c; margin-bottom: 2rem;">Search All Available Properties</h2>
+            <p class="fade-in" style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+                Explore homes on Hilton Head Island with our interactive map search
+            </p>
+            <div class="idx-widget-container fade-in">
+                <!-- IDX Broker Widget Will Load Here -->
+                <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-132328-full" src="//jennyfilkins.idxbroker.com/idx/widgets/132328"></script>
             </div>
         </div>
     </section>
@@ -542,22 +590,22 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-name">Full Name *</label>
-                        <input type="text" id="alert-name" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="text" id="alert-name" required>
                     </div>
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-email">Email *</label>
-                        <input type="email" id="alert-email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="email" id="alert-email" required>
                     </div>
                 </div>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-phone">Phone</label>
-                        <input type="tel" id="alert-phone" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="tel" id="alert-phone">
                     </div>
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-price">Max Price</label>
-                        <select id="alert-price" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <select id="alert-price">
                             <option value="">Any Price</option>
                             <option value="500000">Up to $500K</option>
                             <option value="750000">Up to $750K</option>
@@ -572,7 +620,7 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-beds">Min Bedrooms</label>
-                        <select id="alert-beds" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <select id="alert-beds">
                             <option value="">Any</option>
                             <option value="1">1+</option>
                             <option value="2">2+</option>
@@ -583,7 +631,7 @@
                     </div>
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-baths">Min Bathrooms</label>
-                        <select id="alert-baths" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <select id="alert-baths">
                             <option value="">Any</option>
                             <option value="1">1+</option>
                             <option value="2">2+</option>
@@ -593,7 +641,7 @@
                     </div>
                     <div class="form-group" style="text-align: left;">
                         <label for="alert-type">Property Type</label>
-                        <select id="alert-type" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                        <select id="alert-type">
                             <option value="">Any Type</option>
                             <option value="house">House</option>
                             <option value="condo">Condo</option>
@@ -605,7 +653,7 @@
                 
                 <div class="form-group" style="text-align: left; margin-bottom: 2rem;">
                     <label for="alert-neighborhoods">Preferred Neighborhoods (Optional)</label>
-                    <input type="text" id="alert-neighborhoods" placeholder="e.g., Downtown, Oakwood, Riverside" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="text" id="alert-neighborhoods" placeholder="e.g., Sea Pines, Palmetto Dunes, Shipyard">
                 </div>
                 
                 <button class="btn" onclick="submitPropertyAlerts()" style="width: 100%; padding: 1.2rem; font-size: 1.1rem;">
@@ -676,18 +724,6 @@
                 <a href="https://outlook.office.com/bookwithme/user/74230b73fa8d46478416d43c052dd5ea@jennyfilkins.com" target="_blank" class="btn" style="display: inline-block; margin-top: 1rem;">
                     Schedule Appointment
                 </a>
-                
-                <!-- Alternative: Embed Bookings iframe (uncomment to use) -->
-                <!--
-                <div class="bookings-embed">
-                    <iframe src="YOUR_BOOKINGS_EMBED_URL" 
-                            width="100%" 
-                            height="600" 
-                            frameborder="0" 
-                            style="border:none; margin-top: 1rem;">
-                    </iframe>
-                </div>
-                -->
             </div>
         </div>
     </section>
@@ -731,6 +767,33 @@
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
         });
-    </script>
-</body>
-</html>
+
+        // Property Alerts Form Submission
+        function submitPropertyAlerts() {
+            const formData = {
+                name: document.getElementById('alert-name').value,
+                email: document.getElementById('alert-email').value,
+                phone: document.getElementById('alert-phone').value,
+                maxPrice: document.getElementById('alert-price').value,
+                minBeds: document.getElementById('alert-beds').value,
+                minBaths: document.getElementById('alert-baths').value,
+                propertyType: document.getElementById('alert-type').value,
+                neighborhoods: document.getElementById('alert-neighborhoods').value
+            };
+
+            // Validate required fields
+            if (!formData.name || !formData.email) {
+                alert('Please fill in your name and email address.');
+                return;
+            }
+
+            // Create email body
+            const priceText = formData.maxPrice ? `Up to $${parseInt(formData.maxPrice).toLocaleString()}` : 'Any Price';
+            const bedsText = formData.minBeds ? `${formData.minBeds}+ bedrooms` : 'Any bedrooms';
+            const bathsText = formData.minBaths ? `${formData.minBaths}+ bathrooms` : 'Any bathrooms';
+            const typeText = formData.propertyType ? formData.propertyType : 'Any type';
+            const neighborhoodsText = formData.neighborhoods ? formData.neighborhoods : 'No preference';
+
+            const subject = encodeURIComponent('Property Alert Signup - ' + formData.name);
+            const body = encodeURIComponent(
+                `NEW PROPERTY ALERT SIGNUP
