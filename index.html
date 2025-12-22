@@ -3,7 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenny Filkins Realtor, Dunes Real Estate</title>
+    
+    <title>Contact Jenny Filkins | Hilton Head Luxury Real Estate Expert</title>
+    <meta name="description" content="Contact Jenny Filkins for expert luxury real estate services in Hilton Head Island and the Lowcountry. Schedule a private consultation to find your dream home today.">
+    <meta name="keywords" content="Hilton Head luxury real estate, Jenny Filkins Realtor, Lowcountry dream homes, Hilton Head property inquiry, Dunes Real Estate">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Jenny Filkins",
+      "image": "https://jennyfilkins.com/content/headshot.jpg",
+      "telephone": "(843) 441-6775",
+      "email": "jenny@jennyfilkins.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hilton Head Island",
+        "addressRegion": "SC"
+      }
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,26 +46,18 @@
             background-color: #fff;
         }
 
-        /* --- SLIDESHOW & OVERLAY --- */
+        /* --- SLIDESHOW --- */
         .slideshow-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -2;
-            overflow: hidden;
-            background: #000;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -2; overflow: hidden; background: #000;
         }
 
         .slide {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            animation: softDissolve 24s infinite;
+            width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; animation: softDissolve 24s infinite;
         }
 
         .slide:nth-child(1) { background-image: url('content/slideshow/slide0.jpg'); animation-delay: 0s; }
@@ -63,10 +75,7 @@
 
         .hero-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
+            top: 0; left: 0; width: 100%; height: 100vh;
             background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); 
             z-index: -1;
         }
@@ -75,187 +84,150 @@
         nav {
             background-color: var(--brand-pink);
             padding: 0.4rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 20px 45px rgba(109, 92, 125, 0.25);
+            position: fixed; width: 100%; top: 0;
+            z-index: 1000; box-shadow: 0 20px 45px rgba(109, 92, 125, 0.25);
         }
 
         nav .container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            max-width: 1400px; 
-            margin: 0 auto;
-            width: 100%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            max-width: 1400px; margin: 0 auto; width: 100%; 
         }
 
-        /* Fixed Logo Alignment */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+        .logo-link { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
         .logo-img { height: 75px; width: auto; display: block; }
         
-        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1rem; }
 
-        /* RE-ACTIVE HEADER BUTTONS (FLARE) */
         nav ul li a {
-            text-decoration: none;
-            color: var(--brand-text-gray);
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 12px 18px;
-            position: relative;
-            display: inline-block;
-            z-index: 2;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        nav ul li a::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 0%; height: 0%;
-            background: radial-gradient(circle, var(--soft-glow) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
-            border-radius: 50%;
-            opacity: 0;
-            filter: blur(10px);
+            text-decoration: none; color: var(--brand-text-gray);
+            font-family: var(--font-serif); font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2.5px;
+            padding: 12px 15px; position: relative; display: inline-block;
+            z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-weight: 700;
+            white-space: nowrap;
         }
 
         nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background-color: var(--brand-purple);
-            transition: width 0.4s ease, left 0.4s ease;
+            content: ''; position: absolute; bottom: 8px; left: 50%; width: 0; height: 1px;
+            background-color: var(--brand-purple); transition: width 0.4s ease, left 0.4s ease;
         }
 
-        nav ul li a:hover { color: var(--brand-purple); letter-spacing: 2px; transform: translateY(-2px); }
-        nav ul li a:hover::before { width: 160%; height: 160%; opacity: 1; }
+        nav ul li a:hover { color: var(--brand-purple); letter-spacing: 3px; transform: translateY(-2px); }
         nav ul li a:hover::after { width: 60%; left: 20%; }
 
-        /* Hamburger Toggle */
         .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .menu-toggle span { width: 25px; height: 2px; background: var(--brand-purple); transition: 0.3s; }
 
-        /* --- HERO --- */
+        /* --- HERO & ANIMATIONS --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .glass-box {
-            padding: 0.5rem 1.5rem;
-            background: rgba(0, 0, 0, 0.23);
-            backdrop-filter: blur(1.5px);
-            -webkit-backdrop-filter: blur(1.5px);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 50px 70px rgba(0,0,0,0.6);
-            display: inline-block;
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white;
         }
 
         @keyframes luxuryPop {
-            0% { opacity: 0; transform: translateY(15px); }
+            0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        .pop-title { opacity: 0; animation: luxuryPop 1.4s ease forwards; animation-delay: 0.4s; font-family: var(--font-serif); font-size: 4.5rem; font-weight: 400; }
-        .pop-subtitle { opacity: 0; animation: luxuryPop 1.4s ease forwards; animation-delay: 1.4s; font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2rem; }
+        .pop-title { 
+            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 0.5s; 
+            font-family: var(--font-serif); font-size: 4.5rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 5px;
+        }
+        .pop-subtitle { 
+            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 1.2s; 
+            font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2rem; 
+        }
+        .pop-button {
+            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 1.8s;
+        }
+
+        .glass-box {
+            padding: 2rem 3rem;
+            background: rgba(0, 0, 0, 0.23);
+            backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+            border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 50px 70px rgba(0,0,0,0.6); display: inline-block;
+            overflow: visible; /* Allows text to pop up from below */
+        }
 
         /* --- BUTTONS --- */
         .btn {
-            display: inline-block;
-            padding: 1.1rem 3.2rem;
-            background: var(--brand-purple);
-            color: white;
-            text-decoration: none;
-            border-radius: 2px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: var(--font-serif);
-            font-size: 0.85rem;
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s ease;
-            border: none;
-            cursor: pointer;
+            display: inline-block; padding: 1.1rem 3.2rem; background: var(--brand-purple);
+            color: white; text-decoration: none; border-radius: 2px;
+            text-transform: uppercase; letter-spacing: 3px; font-family: var(--font-serif);
+            font-size: 0.85rem; position: relative; z-index: 1;
+            transition: all 0.4s ease; border: none; cursor: pointer; font-weight: 700;
         }
         .btn:hover { transform: translateY(-3px); background: #5a4a67; }
 
-        /* --- CONTENT SECTIONS --- */
-        section { padding: 10rem 5%; background: #fff; }
+        /* --- MODAL --- */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(109, 92, 125, 0.4); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000; justify-content: center; align-items: center;
+        }
+
+        .modal-content {
+            width: 95%; max-width: 550px; padding: 3.5rem 3rem !important;
+            text-align: center; animation: modalPop 0.4s ease-out; position: relative;
+            background: rgba(43, 37, 51, 0.75);
+        }
+
+        @keyframes modalPop { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        .close-modal {
+            position: absolute; top: 20px; right: 25px; font-size: 34px;
+            color: rgba(255, 255, 255, 0.85); cursor: pointer; transition: color 0.3s;
+        }
+        .close-modal:hover { color: var(--brand-pink); }
+
+        #leadForm input, #leadForm textarea {
+            width: 100%; padding: 14px; margin-bottom: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px;
+            background: rgba(255, 255, 255, 0.98);
+            font-family: var(--font-sans); font-size: 1rem;
+        }
+
+        /* --- SEAMLESS CONTENT SECTIONS --- */
+        section { padding: 8rem 5%; background: #fff; }
         .seamless-bg { background: linear-gradient(to bottom, #fff 0%, var(--brand-pink) 100%); }
-        
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease, transform 1.2s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 4rem; text-align: center; color: var(--brand-purple); text-transform: uppercase; letter-spacing: 6px; font-weight: 400; }
+        h2 { 
+            font-family: var(--font-serif); font-size: 2.8rem; margin-bottom: 3rem; 
+            text-align: center; color: var(--brand-purple); text-transform: uppercase; 
+            letter-spacing: 8px; font-weight: 700;
+        }
 
         .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6rem; align-items: center; max-width: 1300px; margin: 0 auto; }
         .about-img-container { height: 650px; background: url('content/headshot.jpg') center/cover; box-shadow: 0 20px 40px rgba(109, 92, 125, 0.35); }
 
-        /* Back to Top Button */
         #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--brand-purple);
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            align-items: center;
-            justify-content: center;
+            display: none; position: fixed; bottom: 30px; right: 20px; z-index: 1000;
+            background: var(--brand-purple); color: white; width: 45px; height: 45px;
+            border-radius: 50%; border: none; font-size: 20px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); align-items: center; justify-content: center;
         }
 
-        /* --- FOOTER --- */
-        footer { background-color: var(--brand-pink); color: var(--brand-text-gray); text-align: center; padding: 8rem 2rem; box-shadow: 0 -15px 40px rgba(109, 92, 125, 0.25); }
+        footer { background-color: var(--brand-pink); color: var(--brand-text-gray); text-align: center; padding: 6rem 2rem; box-shadow: 0 -15px 40px rgba(109, 92, 125, 0.25); }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .menu-toggle { display: flex; }
             nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--brand-pink);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                transition: 0.5s;
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: var(--brand-pink); flex-direction: column;
+                justify-content: center; align-items: center; transition: 0.5s;
                 box-shadow: -10px 0 30px rgba(0,0,0,0.1);
             }
             nav ul.active { right: 0; }
-            .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
             .about-img-container { height: 400px; }
-            .pop-title { font-size: 2.2rem; }
+            .pop-title { font-size: 2.5rem; letter-spacing: 3px; }
             .pop-subtitle { font-size: 1.8rem; }
-            .glass-box { width: 95%; padding: 1rem; }
         }
     </style>
 </head>
@@ -271,13 +243,12 @@
             <a href="https://jennyfilkins.com/" class="logo-link">
                 <img src="content/JLFLogo.png" alt="Jenny Filkins Logo" class="logo-img">
             </a>
-            
             <div class="menu-toggle" id="mobile-toggle"><span></span><span></span><span></span></div>
             <ul id="nav-menu">
                 <li><a href="https://jennyfilkins.com/">Home</a></li>
                 <li><a href="https://jennyfilkins.com/#about">About</a></li>
-                <li><a href="https://search.jennyfilkins.com">Search</a></li>
-                <li><a href="https://contact.jennyfilkins.com">Contact</a></li>
+                <li><a href="https://search.jennyfilkins.com/idx/map/mapsearch">Search</a></li>
+                <li><a href="javascript:void(0)" onclick="openModal()">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -288,7 +259,7 @@
                 <h1 class="pop-title">Find Your Dream Home</h1>
                 <span class="pop-subtitle">luxury real estate expert</span>
                 <div class="pop-button">
-                    <a href="https://search.jennyfilkins.com" class="btn">Search Properties</a>
+                    <a href="https://search.jennyfilkins.com/idx/map/mapsearch" class="btn">Search Properties</a>
                 </div>
             </div>
         </div>
@@ -301,22 +272,42 @@
         <div class="about-grid">
             <div class="about-img-container"></div>
             <div class="about-text-box">
-                <p>Originally from Massachusetts, Jenny has called the Lowcountry home since 2016, quickly embracing the beauty and lifestyle of the area. With many years of local experience working alongside some of the industry’s top-performing professionals, Jenny brings an exceptional depth of knowledge and expertise to every transaction. Her unique blend of listing and contract experience, which often takes others decades to acquire, ensures her clients are guided with confidence and clarity. Known for her keen attention to detail and friendly demeanor, Jenny is dedicated to providing a streamlined and well-managed experience for buyers and sellers alike.</p>
+                <p style="margin-bottom: 2rem;">Originally from Massachusetts, Jenny has called the Lowcountry home since 2016, quickly embracing the beauty and lifestyle of the area. With many years of local experience working alongside some of the industry’s top-performing professionals, Jenny brings an exceptional depth of knowledge and expertise to every transaction. Her unique blend of listing and contract experience ensures her clients are guided with confidence and clarity.</p>
+                
+                <h3 style="font-family: var(--font-serif); color: var(--brand-purple); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px;">Let's Connect</h3>
+                <p style="margin-bottom: 2rem; color: var(--brand-text-gray); font-style: italic;">Begin your journey in the Lowcountry today.</p>
+                
+                <a href="javascript:void(0)" onclick="openModal()" class="btn">Schedule Consultation</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="text-align: center; background-color: var(--brand-pink); padding: 10rem 5%;" class="fade-in">
-        <h2>Let's Connect</h2>
-        <p style="margin-bottom: 3.5rem; color: var(--brand-purple);">Begin your journey in the Lowcountry today.</p>
-        <a href="https://contact.jennyfilkins.com" target="_blank" class="btn">Schedule Consultation</a>
-    </section>
-
     <button id="backToTop" onclick="scrollToTop()">↑</button>
 
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content glass-box">
+            <span class="close-modal" onclick="closeModalWindow()">&times;</span>
+            <div id="modalFormContainer">
+                <h2 style="margin-bottom: 1.2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); letter-spacing: 6px; font-weight: 700; font-size: 2.2rem; text-transform: uppercase;">INQUIRE TODAY</h2>
+                <p style="margin-bottom: 2.5rem; color: rgba(255,255,255,0.9); font-family: var(--font-serif); font-style: italic; font-size: 1.2rem;">Begin your search with a local expert.</p>
+                <form id="leadForm">
+                    <input type="text" name="fname" placeholder="First Name" aria-label="First Name" required>
+                    <input type="text" name="lname" placeholder="Last Name" aria-label="Last Name" required>
+                    <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" required>
+                    <textarea name="message" rows="4" placeholder="Tell me about your dream home..." aria-label="Message Inquiry" required></textarea>
+                    <button type="submit" id="submitBtn" class="btn" style="width: 100%; font-weight: 700;">SEND INQUIRY</button>
+                </form>
+            </div>
+            <div id="formResponse" style="display: none; padding: 2rem;">
+                <h2 style="color: #fff; letter-spacing: 4px; margin-bottom: 1rem; font-weight: 700;">THANK YOU</h2>
+                <p style="color: rgba(255,255,255,0.9); font-family: var(--font-serif); font-style: italic; font-size: 1.3rem;">Jenny will be in touch with you shortly.</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p style="letter-spacing: 5px; font-family: var(--font-serif); font-size: 1.3rem;">Jenny Filkins Realtor, Dunes Real Estate</p>
-        <p style="font-size: 0.95rem; margin-top: 1rem;">jenny@jennyfilkins.com  &bull;  (843) 441-6775</p>
+        <p style="letter-spacing: 6px; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; text-transform: uppercase;">Jenny Filkins Realtor, Dunes Real Estate</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">jenny@jennyfilkins.com  &bull;  (843) 441-6775</p>
     </footer>
 
     <script>
@@ -329,13 +320,34 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+        const modal = document.getElementById("contactModal");
+        const leadForm = document.getElementById('leadForm');
+        const formContainer = document.getElementById('modalFormContainer');
+        const responseDiv = document.getElementById('formResponse');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function openModal() { modal.style.display = "flex"; document.body.style.overflow = "hidden"; formContainer.style.display = "block"; responseDiv.style.display = "none"; }
+        function closeModalWindow() { modal.style.display = "none"; document.body.style.overflow = "auto"; }
+        window.onclick = (e) => { if (e.target == modal) closeModalWindow(); }
+
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.innerText = "SENDING...";
+            submitBtn.disabled = true;
+            const formData = new FormData(leadForm);
+            fetch('https://jennyfilkins.idxbroker.com/idx/contact', { method: 'POST', body: formData, mode: 'no-cors' })
+            .then(() => {
+                formContainer.style.display = "none"; responseDiv.style.display = "block";
+                setTimeout(closeModalWindow, 3500);
+                submitBtn.innerText = "SEND INQUIRY"; submitBtn.disabled = false; leadForm.reset();
+            });
+        });
+
         window.onscroll = function() {
             const btn = document.getElementById("backToTop");
             if (window.innerWidth <= 992 && (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500)) {
                 btn.style.display = "flex";
-            } else {
-                btn.style.display = "none";
-            }
+            } else { btn.style.display = "none"; }
         };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
