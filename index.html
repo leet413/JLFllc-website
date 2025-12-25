@@ -8,22 +8,6 @@
     <meta name="description" content="Contact Jenny Filkins, Realtor, with Dunes Real Estate for expert luxury real estate services in Hilton Head Island and the Lowcountry. Schedule a private consultation to find your dream home today.">
     <meta name="keywords" content="Hilton Head luxury real estate, Jenny Filkins Realtor, Lowcountry dream homes, Hilton Head property inquiry, Dunes Real Estate">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      "name": "Jenny Filkins",
-      "image": "https://jennyfilkins.com/content/headshot.jpg",
-      "telephone": "(843) 441-6775",
-      "email": "jenny@jennyfilkins.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Hilton Head Island",
-        "addressRegion": "SC"
-      }
-    }
-    </script>
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -33,323 +17,168 @@
             --font-serif: 'Playfair Display', serif;
             --font-script: 'Pinyon Script', cursive;
             --font-sans: 'Montserrat', sans-serif;
-            --soft-glow: rgba(255, 255, 255, 0.45);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); line-height: 1.6; color: #333; overflow-x: hidden; background-color: #fff; }
 
-        body {
-            font-family: var(--font-sans);
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            background-color: #fff;
+        /* --- RESTORED SLIDESHOW --- */
+        .slideshow-container { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100vh; 
+            z-index: -3; /* Placed behind everything */
+            overflow: hidden; 
+            background: #000; 
         }
 
-        /* --- SLIDESHOW --- */
-        .slideshow-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            z-index: -2; overflow: hidden; background: #000;
+        .slide { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            opacity: 0; 
+            animation: softDissolve 24s infinite; /* 6s per slide */
         }
 
-        .slide {
-            position: absolute;
-            width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            opacity: 0; animation: softDissolve 24s infinite;
-        }
-
+        /* Fixed Image Paths */
         .slide:nth-child(1) { background-image: url('content/slideshow/slide0.jpg'); animation-delay: 0s; }
         .slide:nth-child(2) { background-image: url('content/slideshow/slide1.jpg'); animation-delay: 6s; }
         .slide:nth-child(3) { background-image: url('content/slideshow/slide2.jpg'); animation-delay: 12s; }
         .slide:nth-child(4) { background-image: url('content/slideshow/slide3.jpg'); animation-delay: 18s; }
 
-        @keyframes softDissolve {
-            0% { opacity: 0; transform: scale(1.0); }
-            5% { opacity: 1; }
-            25% { opacity: 1; }
-            30% { opacity: 0; transform: scale(1.1); }
-            100% { opacity: 0; }
+        @keyframes softDissolve { 
+            0% { opacity: 0; transform: scale(1.0); } 
+            5% { opacity: 1; } 
+            25% { opacity: 1; } 
+            30% { opacity: 0; transform: scale(1.05); } 
+            100% { opacity: 0; } 
         }
 
-        .hero-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
+        .hero-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100vh; 
             background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); 
-            z-index: -1;
+            z-index: -2; /* Between slides and content */
         }
 
         /* --- NAVIGATION --- */
-        nav {
-            background-color: var(--brand-pink);
-            padding: 0.4rem 5%;
-            position: fixed; width: 100%; top: 0;
-            z-index: 1000; box-shadow: 0 20px 45px rgba(109, 92, 125, 0.25);
-        }
-
-        nav .container { 
-            display: flex; justify-content: space-between; align-items: center; 
-            max-width: 1400px; margin: 0 auto; width: 100%; 
-        }
-
-        .logo-link { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        nav { background-color: var(--brand-pink); padding: 0.4rem 5%; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 20px 45px rgba(109, 92, 125, 0.25); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; width: 100%; }
         .logo-img { height: 75px; width: auto; display: block; }
-        
         nav ul { display: flex; list-style: none; gap: 1rem; }
-
-        nav ul li a {
-            text-decoration: none; color: var(--brand-text-gray);
-            font-family: var(--font-serif); font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 2.5px;
-            padding: 12px 15px; position: relative; display: inline-block;
-            z-index: 2; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        nav ul li a::after {
-            content: ''; position: absolute; bottom: 8px; left: 50%; width: 0; height: 1px;
-            background-color: var(--brand-purple); transition: width 0.4s ease, left 0.4s ease;
-        }
-
+        nav ul li a { text-decoration: none; color: var(--brand-text-gray); font-family: var(--font-serif); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2.5px; padding: 12px 15px; font-weight: 700; white-space: nowrap; transition: 0.4s; }
         nav ul li a:hover { color: var(--brand-purple); letter-spacing: 3px; transform: translateY(-2px); }
-        nav ul li a:hover::after { width: 60%; left: 20%; }
 
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .menu-toggle span { width: 25px; height: 2px; background: var(--brand-purple); transition: 0.3s; }
+        /* --- HERO --- */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        @keyframes luxuryPop { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+        .pop-title { opacity: 0; animation: luxuryPop 0.8s forwards; animation-delay: 0.3s; font-family: var(--font-serif); font-size: 4.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
+        .pop-subtitle { opacity: 0; animation: luxuryPop 0.8s forwards; animation-delay: 0.7s; font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .pop-button { opacity: 0; animation: luxuryPop 0.8s forwards; animation-delay: 1.1s; }
+        .btn { display: inline-block; padding: 1.1rem 3.2rem; background: var(--brand-purple); color: white; text-decoration: none; border-radius: 2px; text-transform: uppercase; letter-spacing: 3px; font-family: var(--font-serif); font-size: 0.85rem; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: none; cursor: pointer; transition: 0.4s; }
+        .btn:hover { transform: translateY(-3px); background: #5a4a67; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
 
-        /* --- HERO & ANIMATIONS --- */
-        .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white;
-        }
+        /* --- GOLDEN DIVIDER --- */
+        .gold-divider { width: 100%; height: 8px; background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); position: relative; z-index: 5; }
 
-        @keyframes luxuryPop {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .pop-title { 
-            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 0.5s; 
-            font-family: var(--font-serif); font-size: 4.5rem; 
-            font-weight: 700; text-transform: uppercase; letter-spacing: 5px;
-        }
-        .pop-subtitle { 
-            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 1.2s; 
-            font-family: var(--font-script); font-size: 3.5rem; text-transform: lowercase; display: block; margin-bottom: 2rem; 
-        }
-        .pop-button {
-            opacity: 0; animation: luxuryPop 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; animation-delay: 1.8s;
-        }
-
-        .glass-box {
-            padding: 2rem 3rem;
-            background: rgba(0, 0, 0, 0.23);
-            backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
-            border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 50px 70px rgba(0,0,0,0.6); display: inline-block;
-            overflow: visible; /* Allows text to pop up from below */
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block; padding: 1.1rem 3.2rem; background: var(--brand-purple);
-            color: white; text-decoration: none; border-radius: 2px;
-            text-transform: uppercase; letter-spacing: 3px; font-family: var(--font-serif);
-            font-size: 0.85rem; position: relative; z-index: 1;
-            transition: all 0.4s ease; border: none; cursor: pointer; font-weight: 700;
-        }
-        .btn:hover { transform: translateY(-3px); background: #5a4a67; }
+        /* --- ABOUT --- */
+        section { padding: 8rem 5%; background: #fff; position: relative; z-index: 10; }
+        .seamless-bg { background: linear-gradient(to bottom, #fff 0%, var(--brand-pink) 100%); }
+        .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6rem; align-items: center; max-width: 1300px; margin: 0 auto; }
+        .about-img-container { height: 650px; background: url('content/headshot.jpg') center/cover; border-radius: 40px; box-shadow: 0 20px 40px rgba(109, 92, 125, 0.25), 0 40px 80px rgba(0, 0, 0, 0.3); }
 
         /* --- MODAL --- */
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(109, 92, 125, 0.4); backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 10000; justify-content: center; align-items: center;
-        }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(43, 37, 51, 0.6); backdrop-filter: blur(10px); z-index: 10000; justify-content: center; align-items: center; }
+        .modal-content { width: 95%; max-width: 550px; padding: 3.5rem 3rem !important; text-align: center; background: rgba(43, 37, 51, 0.85); position: relative; border-radius: 8px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .close-modal { position: absolute; top: 20px; right: 25px; font-size: 34px; color: rgba(255, 255, 255, 0.85); cursor: pointer; }
+        #leadForm input, #leadForm textarea { width: 100%; padding: 14px; margin-bottom: 1.2rem; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.98); font-family: var(--font-sans); }
 
-        .modal-content {
-            width: 95%; max-width: 550px; padding: 3.5rem 3rem !important;
-            text-align: center; animation: modalPop 0.4s ease-out; position: relative;
-            background: rgba(43, 37, 51, 0.75);
-        }
-
-        @keyframes modalPop { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
-        .close-modal {
-            position: absolute; top: 20px; right: 25px; font-size: 34px;
-            color: rgba(255, 255, 255, 0.85); cursor: pointer; transition: color 0.3s;
-        }
-        .close-modal:hover { color: var(--brand-pink); }
-
-        #leadForm input, #leadForm textarea {
-            width: 100%; padding: 14px; margin-bottom: 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px;
-            background: rgba(255, 255, 255, 0.98);
-            font-family: var(--font-sans); font-size: 1rem;
-        }
-
-        /* --- SEAMLESS CONTENT SECTIONS --- */
-        section { padding: 8rem 5%; background: #fff; }
-        .seamless-bg { background: linear-gradient(to bottom, #fff 0%, var(--brand-pink) 100%); }
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1.2s ease, transform 1.2s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        h2 { 
-            font-family: var(--font-serif); font-size: 2.8rem; margin-bottom: 3rem; 
-            text-align: center; color: var(--brand-purple); text-transform: uppercase; 
-            letter-spacing: 8px; font-weight: 700;
-        }
-
-        .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6rem; align-items: center; max-width: 1300px; margin: 0 auto; }
-        .about-img-container { height: 650px; background: url('content/headshot.jpg') center/cover; box-shadow: 0 20px 40px rgba(109, 92, 125, 0.35); }
-
-        #backToTop {
-            display: none; position: fixed; bottom: 30px; right: 20px; z-index: 1000;
-            background: var(--brand-purple); color: white; width: 45px; height: 45px;
-            border-radius: 50%; border: none; font-size: 20px; cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); align-items: center; justify-content: center;
-        }
-
-        footer { background-color: var(--brand-pink); color: var(--brand-text-gray); text-align: center; padding: 6rem 2rem; box-shadow: 0 -15px 40px rgba(109, 92, 125, 0.25); }
-
-        @media (max-width: 992px) {
-            .menu-toggle { display: flex; }
-            nav ul {
-                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
-                background: var(--brand-pink); flex-direction: column;
-                justify-content: center; align-items: center; transition: 0.5s;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            }
-            nav ul.active { right: 0; }
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
-            .about-img-container { height: 400px; }
-            .pop-title { font-size: 2.5rem; letter-spacing: 3px; }
-            .pop-subtitle { font-size: 1.8rem; }
+        @media (max-width: 992px) { 
+            nav ul { display: none; } 
+            .about-grid { grid-template-columns: 1fr; text-align: center; } 
+            .pop-title { font-size: 2.5rem; } 
+            .about-img-container { height: 450px; }
         }
     </style>
 </head>
 <body>
 
     <div class="slideshow-container">
-        <div class="slide"></div><div class="slide"></div><div class="slide"></div><div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
     </div>
     <div class="hero-overlay"></div>
 
-    <nav>
-        <div class="container">
-            <a href="https://jennyfilkins.com/" class="logo-link">
-                <img src="content/JLFLogo.png" alt="Jenny Filkins Logo" class="logo-img">
-            </a>
-            <div class="menu-toggle" id="mobile-toggle"><span></span><span></span><span></span></div>
-            <ul id="nav-menu">
-                <li><a href="https://jennyfilkins.com/">Home</a></li>
-                <li><a href="https://jennyfilkins.com/#about">About</a></li>
-                <li><a href="https://search.jennyfilkins.com/idx/map/mapsearch">Search</a></li>
-                <li><a href="javascript:void(0)" onclick="openModal()">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav><div class="container"><a href="https://jennyfilkins.com/" class="logo-link"><img src="content/JLFLogo.png" alt="Jenny Filkins Logo" class="logo-img"></a>
+    <ul id="nav-menu"><li><a href="https://jennyfilkins.com/">Home</a></li><li><a href="https://jennyfilkins.com/#about">About</a></li><li><a href="https://search.jennyfilkins.com/idx/map/mapsearch">Search</a></li><li><a href="javascript:void(0)" onclick="openModal()">Contact</a></li></ul></div></nav>
 
-    <section id="home" class="hero" style="background: transparent;">
-        <div class="glass-box">
-            <div class="hero-content">
-                <h1 class="pop-title">Find Your Dream Home</h1>
-                <span class="pop-subtitle">luxury real estate expert</span>
-                <div class="pop-button">
-                    <a href="https://search.jennyfilkins.com/idx/map/mapsearch" class="btn">Search Properties</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="home" class="hero"><div class="hero-content-wrapper"><h1 class="pop-title">Find Your Dream Home</h1><span class="pop-subtitle">luxury real estate expert</span><div class="pop-button"><a href="https://search.jennyfilkins.com/idx/map/mapsearch" class="btn">Search Properties</a></div></div></section>
 
-    <div id="idx-wrapper-content"></div>
+    <div class="gold-divider"></div>
 
-    <section id="about" class="fade-in seamless-bg">
-        <h2>Experience Excellence</h2>
-        <div class="about-grid">
-            <div class="about-img-container"></div>
-            <div class="about-text-box">
-                <p style="margin-bottom: 2rem;">Originally from Massachusetts, Jenny has called the Lowcountry home since 2016, quickly embracing the beauty and lifestyle of the area. With many years of local experience working alongside some of the industry’s top-performing professionals, Jenny brings an exceptional depth of knowledge and expertise to every transaction. Her unique blend of listing and contract experience ensures her clients are guided with confidence and clarity.</p>
-                
-                <h3 style="font-family: var(--font-serif); color: var(--brand-purple); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px;">Let's Connect</h3>
-                <p style="margin-bottom: 2rem; color: var(--brand-text-gray); font-style: italic;">Begin your journey in the Lowcountry today.</p>
-                
-                <a href="javascript:void(0)" onclick="openModal()" class="btn">Schedule Consultation</a>
-            </div>
-        </div>
-    </section>
-
-    <button id="backToTop" onclick="scrollToTop()">↑</button>
+    <section id="about" class="fade-in seamless-bg"><h2>Experience Excellence</h2>
+    <div class="about-grid"><div class="about-img-container"></div><div class="about-text-box"><p style="margin-bottom: 2rem;">Originally from Massachusetts, Jenny has called the Lowcountry home since 2016. With many years of local experience working alongside industry-leading professionals, she brings exceptional depth and clarity to every transaction.</p>
+    <h3 style="font-family: var(--font-serif); color: var(--brand-purple); font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 4px;">Let's Connect</h3><p style="margin-bottom: 2rem; color: var(--brand-text-gray); font-style: italic;">Begin your journey in the Lowcountry today.</p>
+    <a href="javascript:void(0)" onclick="openModal()" class="btn">Schedule Consultation</a></div></div></section>
 
     <div id="contactModal" class="modal-overlay">
-        <div class="modal-content glass-box">
+        <div class="modal-content">
             <span class="close-modal" onclick="closeModalWindow()">&times;</span>
             <div id="modalFormContainer">
-                <h2 style="margin-bottom: 1.2rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); letter-spacing: 6px; font-weight: 700; font-size: 2.2rem; text-transform: uppercase;">INQUIRE TODAY</h2>
-                <p style="margin-bottom: 2.5rem; color: rgba(255,255,255,0.9); font-family: var(--font-serif); font-style: italic; font-size: 1.2rem;">Begin your search with a local expert.</p>
+                <h2 style="margin-bottom: 1.2rem; color: #fff; letter-spacing: 6px; font-weight: 700; font-size: 2.2rem; text-transform: uppercase;">INQUIRE TODAY</h2>
                 <form id="leadForm">
-                    <input type="text" name="fname" placeholder="First Name" aria-label="First Name" required>
-                    <input type="text" name="lname" placeholder="Last Name" aria-label="Last Name" required>
-                    <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" required>
-                    <textarea name="message" rows="4" placeholder="Tell me about your dream home..." aria-label="Message Inquiry" required></textarea>
-                    <button type="submit" id="submitBtn" class="btn" style="width: 100%; font-weight: 700;">SEND INQUIRY</button>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="text" name="phone" placeholder="Phone Number">
+                    <textarea name="message" rows="4" placeholder="How can I help you find your dream home?" required></textarea>
+                    <button type="submit" id="submitBtn" class="btn" style="width: 100%;">SEND INQUIRY</button>
                 </form>
             </div>
-            <div id="formResponse" style="display: none; padding: 2rem;">
-                <h2 style="color: #fff; letter-spacing: 4px; margin-bottom: 1rem; font-weight: 700;">THANK YOU</h2>
-                <p style="color: rgba(255,255,255,0.9); font-family: var(--font-serif); font-style: italic; font-size: 1.3rem;">Jenny will be in touch with you shortly.</p>
-            </div>
+            <div id="formResponse" style="display: none; padding: 2rem; color: #fff;"><h2>THANK YOU</h2><p>Jenny will be in touch shortly.</p></div>
         </div>
     </div>
 
-    <footer>
-        <p style="letter-spacing: 6px; font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; text-transform: uppercase;">Jenny Filkins Realtor, Dunes Real Estate</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem;">jenny@jennyfilkins.com  &bull;  (843) 441-6775</p>
-    </footer>
-
     <script>
-        const toggle = document.getElementById('mobile-toggle');
-        const menu = document.getElementById('nav-menu');
-        toggle.onclick = () => menu.classList.toggle('active');
+        function openModal() { 
+            document.getElementById("contactModal").style.display = "flex"; 
+            document.body.style.overflow = "hidden"; // Disable scroll
+        }
+        function closeModalWindow() { 
+            document.getElementById("contactModal").style.display = "none"; 
+            document.body.style.overflow = "auto"; // Enable scroll
+        }
+        
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "SENDING...";
+            
+            fetch('contact.php', {
+                method: 'POST',
+                body: new FormData(this)
+            }).then(() => {
+                document.getElementById('modalFormContainer').style.display = "none";
+                document.getElementById('formResponse').style.display = "block";
+                setTimeout(closeModalWindow, 3000);
+            }).catch(err => {
+                alert("Error sending message. Please try again.");
+                btn.innerText = "SEND INQUIRY";
+            });
+        });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        const modal = document.getElementById("contactModal");
-        const leadForm = document.getElementById('leadForm');
-        const formContainer = document.getElementById('modalFormContainer');
-        const responseDiv = document.getElementById('formResponse');
-        const submitBtn = document.getElementById('submitBtn');
-
-        function openModal() { modal.style.display = "flex"; document.body.style.overflow = "hidden"; formContainer.style.display = "block"; responseDiv.style.display = "none"; }
-        function closeModalWindow() { modal.style.display = "none"; document.body.style.overflow = "auto"; }
-        window.onclick = (e) => { if (e.target == modal) closeModalWindow(); }
-
-        leadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitBtn.innerText = "SENDING...";
-            submitBtn.disabled = true;
-            const formData = new FormData(leadForm);
-            fetch('https://jennyfilkins.idxbroker.com/idx/contact', { method: 'POST', body: formData, mode: 'no-cors' })
-            .then(() => {
-                formContainer.style.display = "none"; responseDiv.style.display = "block";
-                setTimeout(closeModalWindow, 3500);
-                submitBtn.innerText = "SEND INQUIRY"; submitBtn.disabled = false; leadForm.reset();
-            });
-        });
-
-        window.onscroll = function() {
-            const btn = document.getElementById("backToTop");
-            if (window.innerWidth <= 992 && (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500)) {
-                btn.style.display = "flex";
-            } else { btn.style.display = "none"; }
-        };
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>
